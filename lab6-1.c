@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <float.h>
 
-#define M 3  // Кількість рядків
-#define N 4  // Кількість стовпців
+#define M 3
+#define N 4 
 
 int main() {
     system("chcp 65001");
-    // Задаємо матриці A і B
+
     double A[M][N] = {
         {1.5, 2.3, 4.0, 0.5},
         {1.7, 3.2, 5.1, 8.4},
@@ -19,17 +19,14 @@ int main() {
         {0.1, 1.7, 2.1, 5.9}
     };
     
-    // Матриця C = A - B
     double C[M][N];
     
-    // Обчислюємо матрицю C
     for (int i = 0; i < M; i++) {
         for (int j = 0; j < N; j++) {
             C[i][j] = A[i][j] - B[i][j];
         }
     }
     
-    // Виводимо матриці для наглядності
     printf("Матриця A:\n");
     for (int i = 0; i < M; i++) {
         for (int j = 0; j < N; j++) {
@@ -54,17 +51,15 @@ int main() {
         printf("\n");
     }
     
-    // Обчислюємо коефіцієнти для кожного рядка (середнє значення)
     double coefficients[M];
     for (int i = 0; i < M; i++) {
         double sum = 0;
         for (int j = 0; j < N; j++) {
             sum += C[i][j];
         }
-        coefficients[i] = sum / N;  // Середнє арифметичне
+        coefficients[i] = sum / N;
     }
     
-    // Знаходимо рядок з мінімальним коефіцієнтом
     int min_row = 0;
     double min_coeff = coefficients[0];
     for (int i = 1; i < M; i++) {
@@ -74,7 +69,6 @@ int main() {
         }
     }
     
-    // Виводимо результати
     printf("\nКоефіцієнти рядків (середнє значення):\n");
     for (int i = 0; i < M; i++) {
         printf("Рядок %d: %.2f\n", i+1, coefficients[i]);
